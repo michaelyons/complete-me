@@ -17,6 +17,6 @@ describe('NODE', () => {
   });
 
   it('should take data and assign it to data prop', () => {
-    expect(newNode.data).to.equal('letter');
+    expect(newNode.data).to.equal('a');
   });
 });
