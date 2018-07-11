@@ -1,20 +1,18 @@
 import { expect } from 'chai';
-import Node from '../lib/Node';
 import PrefixTrie from '../lib/PrefixTrie';
 
 describe('PREFIX TRIE', () => {
-  let trie;
+  let newTrie;
 
   beforeEach(() => {
-    trie = new PrefixTrie();
+    newTrie = new PrefixTrie();
   });
 
   it('should start with zero elements', () => {
-    expect(trie.length).to.eq(0);
+    expect(newTrie.length).to.eq(0);
   });
 
   it('should set its default head to null', () => {
-    expect(trie.head).to.eq(null);
+    expect(newTrie.head).to.eq(null);
   });
-
 });
