@@ -16,8 +16,22 @@ describe('PREFIX TRIE', () => {
     expect(newTrie.wordCount).to.eq(0);
   });
 
-  it('should be able to insert new child', () => {
-    expect(newTrie.insert()).to.eq('a');
+  it('should have rootnode', () => {
+    expect(newTrie.rootNode).to.deep.eq({
+      childrenCount: 0,
+      leafNode: false,
+      children: {},
+      endOfTheWord: false
+    });
+  });
+
+  it('should be able to insert a word', () => {
+    newTrie.insert('michael');
+    newTrie.insert('is');
+    newTrie.insert('a');
+    newTrie.insert('tennis');
+    newTrie.insert('player');
+    expect(newTrie.wordCount).to.eq(5);
   });
 
 });
