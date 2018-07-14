@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import PrefixTrie from '../lib/PrefixTrie';
+import Node from '../lib.Node';
 
 describe('PREFIX TRIE', () => {
   let newTrie;
@@ -8,24 +9,12 @@ describe('PREFIX TRIE', () => {
     newTrie = new PrefixTrie();
   });
 
-  it('should start with zero children elements', () => {
-    expect(newTrie.childrenCount).to.eq(0);
-  });
-
-  it('should set its default root to null', () => {
-    expect(newTrie.root).to.eq(null);
-  });
-
-  it('increment childrencount upon new child creation', () => {
-    expect(newTrie.countChildren()).to.eq(1);
+  it('should have a default word count value of 0', () => {
+    expect(newTrie.wordCount).to.eq(0);
   });
 
   it('should be able to insert new child', () => {
-    expect(newTrie.insertChild()).to.eq('a');
-  });
-
-  it('should make all child inputs case insensitive', () => {
-    expect(newTrie.insertChild('A')).to.eq('a');
+    expect(newTrie.insert()).to.eq('a');
   });
 
 });
