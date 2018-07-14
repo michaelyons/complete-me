@@ -46,7 +46,7 @@ describe('PREFIX TRIE', () => {
       newTrie.insert('disco');
       newTrie.insert('michael');
       newTrie.insert('michael');
-      newTrie.insert('michael');
+      newTrie.insert('disco');
       expect(newTrie.wordCount).to.eq(2);
     });
   });
