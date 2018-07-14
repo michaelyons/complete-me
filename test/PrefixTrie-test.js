@@ -16,7 +16,7 @@ describe('PREFIX TRIE', () => {
     expect(newTrie.wordCount).to.eq(0);
   });
 
-  it('should have rootnode', () => {
+  it('should have rootnode thats an instance of node', () => {
     expect(newTrie.rootNode).to.deep.eq({
       childrenCount: 0,
       leafNode: false,
@@ -25,7 +25,7 @@ describe('PREFIX TRIE', () => {
     });
   });
 
-  it('should be able to insert a word', () => {
+  it('should increment word count of trie when word is inserted', () => {
     newTrie.insert('michael');
     newTrie.insert('is');
     newTrie.insert('a');
@@ -33,5 +33,21 @@ describe('PREFIX TRIE', () => {
     newTrie.insert('player');
     expect(newTrie.wordCount).to.eq(5);
   });
+
+  it('should be able to add a node to the trie', () => {
+    newTrie.insert('mike');
+    expect(newTrie.childrenCount).to.eq(4);
+  });
+
+  it('should not increment word count when inserting duplicate words', () => {
+    newTrie.insert('michael');
+    newTrie.insert('michael');
+    newTrie.insert('michael');
+    newTrie.insert('michael');
+    newTrie.insert('michael');
+    expect(newTrie.wordCount).to.eq(1);
+  });
+
+  // console.log(JSON.stringify(newTrie, null, 4));
 
 });
