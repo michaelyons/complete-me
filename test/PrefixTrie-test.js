@@ -41,11 +41,11 @@ describe('PREFIX TRIE', () => {
 
   it('should not increment word count when inserting duplicate words', () => {
     newTrie.insert('michael');
+    newTrie.insert('disco');
     newTrie.insert('michael');
     newTrie.insert('michael');
     newTrie.insert('michael');
-    newTrie.insert('michael');
-    expect(newTrie.wordCount).to.eq(1);
+    expect(newTrie.wordCount).to.eq(2);
   });
 
   // console.log(JSON.stringify(newTrie, null, 4));
