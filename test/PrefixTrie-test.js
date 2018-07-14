@@ -8,24 +8,30 @@ describe('PREFIX TRIE', () => {
     newTrie = new PrefixTrie();
   });
 
-  it('should start with zero children elements', () => {
-    expect(newTrie.childrenCount).to.eq(0);
+  it('should exist', () => {
+    expect(newTrie).to.exist;
+  });
+  
+  it('should have a default word count value of 0', () => {
+    expect(newTrie.wordCount).to.eq(0);
   });
 
-  it('should set its default root to null', () => {
-    expect(newTrie.root).to.eq(null);
+  it('should have rootnode', () => {
+    expect(newTrie.rootNode).to.deep.eq({
+      childrenCount: 0,
+      leafNode: false,
+      children: {},
+      endOfTheWord: false
+    });
   });
 
-  it('increment childrencount upon new child creation', () => {
-    expect(newTrie.countChildren()).to.eq(1);
-  });
-
-  it('should be able to insert new child', () => {
-    expect(newTrie.insertChild()).to.eq('a');
-  });
-
-  it('should make all child inputs case insensitive', () => {
-    expect(newTrie.insertChild('A')).to.eq('a');
+  it('should be able to insert a word', () => {
+    newTrie.insert('michael');
+    newTrie.insert('is');
+    newTrie.insert('a');
+    newTrie.insert('tennis');
+    newTrie.insert('player');
+    expect(newTrie.wordCount).to.eq(5);
   });
 
 });
