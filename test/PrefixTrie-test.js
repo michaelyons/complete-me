@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import PrefixTrie from '../lib/PrefixTrie';
+import fs from 'fs';
 
 describe('PREFIX TRIE', () => {
   let newTrie;
