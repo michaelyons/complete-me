@@ -51,4 +51,36 @@ describe('PREFIX TRIE', () => {
       expect(newTrie.wordCount).to.eq(2);
     });
   });
+
+  describe('populate', () => {
+    
+    it('should bring in the local dictionary', () => {
+      const text = "/usr/share/dict/words";
+      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
+      const newTrieComplete = new PrefixTrie();
+
+      newTrieComplete.populate(dictionary);
+      expect(newTrieComplete.wordCount).to.eq(235886);
+    });
+
+    it.skip('should provide suggestions with the dictionary', () => {
+      const text = "/usr/share/dict/words";
+      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
+      const newTrieComplete = new PrefixTrie();
+
+      newTrieComplete.populate(dictionary);
+      newTrieComplete.suggested('bron');
+
+      expect(newTrieComplete.suggestedArray).to.deep.eq(['bronco', 'broncos']);
+    });
+  });
+
+  describe('suggested', () => {
+
+    it.skip('should make word suggestions based on the prefix provided', () => {
+
+    });
+
+  });
+
 });
