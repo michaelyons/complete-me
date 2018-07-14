@@ -25,29 +25,29 @@ describe('PREFIX TRIE', () => {
     });
   });
 
-  it('should increment word count of trie when word is inserted', () => {
-    newTrie.insert('michael');
-    newTrie.insert('is');
-    newTrie.insert('a');
-    newTrie.insert('tennis');
-    newTrie.insert('player');
-    expect(newTrie.wordCount).to.eq(5);
+  describe('insert', () => {
+
+    it('should increment word count of trie when word is inserted', () => {
+      newTrie.insert('michael');
+      newTrie.insert('is');
+      newTrie.insert('a');
+      newTrie.insert('tennis');
+      newTrie.insert('player');
+      expect(newTrie.wordCount).to.eq(5);
+    });
+    
+    it('should be able to add a node to the trie', () => {
+      newTrie.insert('mike');
+      expect(Object.keys(newTrie.rootNode.children)).to.deep.eq(['m']);
+    });
+    
+    it('should not increment word count when inserting duplicate words', () => {
+      newTrie.insert('michael');
+      newTrie.insert('disco');
+      newTrie.insert('michael');
+      newTrie.insert('michael');
+      newTrie.insert('michael');
+      expect(newTrie.wordCount).to.eq(2);
+    });
   });
-
-  it('should be able to add a node to the trie', () => {
-    newTrie.insert('mike');
-    expect(newTrie.childrenCount).to.eq(4);
-  });
-
-  it('should not increment word count when inserting duplicate words', () => {
-    newTrie.insert('michael');
-    newTrie.insert('disco');
-    newTrie.insert('michael');
-    newTrie.insert('michael');
-    newTrie.insert('michael');
-    expect(newTrie.wordCount).to.eq(2);
-  });
-
-  // console.log(JSON.stringify(newTrie, null, 4));
-
 });
