@@ -54,28 +54,47 @@ describe('PREFIX TRIE', () => {
 
   describe('populate', () => {
     
-    it('should bring in the local dictionary', () => {
+    it.skip('should bring in dictionary & return an array of words', () => {
       const text = "/usr/share/dict/words";
-      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
+      const diction = fs.readFileSync(text).toString().trim().split('\n');
       const newTrieComplete = new PrefixTrie();
 
-      newTrieComplete.populate(dictionary);
+      newTrieComplete.populate(diction);
       expect(newTrieComplete.wordCount).to.eq(234371);
     });
 
-    it.skip('should provide suggestions with the dictionary', () => {
+    it.skip('should provide suggestions with the dictionary array', () => {
       const text = "/usr/share/dict/words";
-      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
+      const diction = fs.readFileSync(text).toString().trim().split('\n');
       const newTrieComplete = new PrefixTrie();
 
-      newTrieComplete.populate(dictionary);
-      newTrieComplete.suggested('bron');
+      newTrieComplete.populate(diction);
+      newTrieComplete.suggest('texa');
 
-      expect(newTrieComplete.suggestedArray).to.deep.eq(['bronco', 'broncos']);
+      expect(newTrieComplete.suggestedArray).to.deep.eq(['texas']);
     });
   });
 
-  describe('suggested', () => {
+  describe('suggest', () => {
+
+    it('should have a suggest method', () => {
+      expect(newTrie).respondsTo('suggest');
+    });
+
+    it('should return an empty array if no words contain that prefix', () => {
+      newTrie.insert('money');
+      newTrie.insert('moth');
+      newTrie.insert('monkey');
+      expect(newTrie.suggest('mzz')).to.deep.eq([]);
+    });
+
+    it('should return an array of all the words containing the prefix', () => {
+      newTrie.insert('money');
+      newTrie.insert('month');
+      newTrie.insert('mister');
+      expect(newTrie.suggest('m')).to.deep.eq(['money', 'month', 'mister']);
+      expect(newTrie.suggest('mo')).to.deep.eq(['money', 'month']);
+    });
 
     it.skip('should make word suggestions based on the prefix provided', () => {
 
