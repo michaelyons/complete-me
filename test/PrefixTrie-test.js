@@ -60,7 +60,7 @@ describe('PREFIX TRIE', () => {
       const newTrieComplete = new PrefixTrie();
 
       newTrieComplete.populate(dictionary);
-      expect(newTrieComplete.wordCount).to.eq(235886);
+      expect(newTrieComplete.wordCount).to.eq(234371);
     });
 
     it.skip('should provide suggestions with the dictionary', () => {
