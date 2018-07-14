@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import PrefixTrie from '../lib/PrefixTrie';
-import Node from '../lib.Node';
 
 describe('PREFIX TRIE', () => {
   let newTrie;
@@ -9,6 +8,10 @@ describe('PREFIX TRIE', () => {
     newTrie = new PrefixTrie();
   });
 
+  it('should exist', () => {
+    expect(newTrie).to.exist;
+  });
+  
   it('should have a default word count value of 0', () => {
     expect(newTrie.wordCount).to.eq(0);
   });
