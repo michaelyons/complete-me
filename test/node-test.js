@@ -23,5 +23,4 @@ describe('NODE', () => {
   it('should have a leafNode property that is default at false', () => {
     expect(newNode.leafNode).to.equal(false);
   });
-  
 });
