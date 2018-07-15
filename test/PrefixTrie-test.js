@@ -66,11 +66,11 @@ describe('PREFIX TRIE', () => {
       const text = "/usr/share/dict/words";
       const dictionary = fs.readFileSync(text).toString().trim().split('\n');
       const newTrieComplete = new PrefixTrie();
-
+      
       newTrieComplete.populate(dictionary);
-      newTrieComplete.suggest('texa');
+      let suggestedArray = newTrieComplete.suggest('texa');
 
-      expect(newTrieComplete.suggestedArray).to.deep.eq(['texas']);
+      expect(suggestedArray).to.deep.eq(['texan', 'texas']);
     });
   });
 
@@ -95,10 +95,13 @@ describe('PREFIX TRIE', () => {
       expect(newTrie.suggest('mo')).to.deep.eq(['money', 'month']);
     });
 
-    it.skip('should make word suggestions based on the prefix provided', () => {
-
+    it('should make word suggestions from the prefix provided', () => {
+      newTrie.insert('money');
+      newTrie.insert('month');
+      newTrie.insert('mouth');
+      let suggestedArray = newTrie.suggest('mo');
+      
+      expect(suggestedArray).to.deep.eq(['money', 'month', 'mouth']);
     });
-
   });
-
 });
