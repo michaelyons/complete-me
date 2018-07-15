@@ -19,8 +19,4 @@ describe('NODE', () => {
   it('should have a child count property that is default at 0', () => {
     expect(newNode.childrenCount).to.equal(0);
   });
-  
-  it('should have a leafNode property that is default at false', () => {
-    expect(newNode.leafNode).to.equal(false);
-  });
 });

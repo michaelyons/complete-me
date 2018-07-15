@@ -20,7 +20,6 @@ describe('PREFIX TRIE', () => {
   it('should have rootnode thats an instance of node', () => {
     expect(newTrie.rootNode).to.deep.eq({
       childrenCount: 0,
-      leafNode: false,
       children: {},
       endOfTheWord: false
     });
@@ -54,21 +53,21 @@ describe('PREFIX TRIE', () => {
 
   describe('populate', () => {
     
-    it.skip('should bring in dictionary & return an array of words', () => {
+    it('should bring in dictionary & return an array of words', () => {
       const text = "/usr/share/dict/words";
-      const diction = fs.readFileSync(text).toString().trim().split('\n');
+      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
       const newTrieComplete = new PrefixTrie();
 
-      newTrieComplete.populate(diction);
+      newTrieComplete.populate(dictionary);
       expect(newTrieComplete.wordCount).to.eq(234371);
     });
 
-    it.skip('should provide suggestions with the dictionary array', () => {
+    it('should provide suggestions with the dictionary array', () => {
       const text = "/usr/share/dict/words";
-      const diction = fs.readFileSync(text).toString().trim().split('\n');
+      const dictionary = fs.readFileSync(text).toString().trim().split('\n');
       const newTrieComplete = new PrefixTrie();
 
-      newTrieComplete.populate(diction);
+      newTrieComplete.populate(dictionary);
       newTrieComplete.suggest('texa');
 
       expect(newTrieComplete.suggestedArray).to.deep.eq(['texas']);
