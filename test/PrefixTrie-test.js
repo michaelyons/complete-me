@@ -21,7 +21,7 @@ describe('PREFIX TRIE', () => {
     expect(newTrie.rootNode).to.deep.eq({
       childrenCount: 0,
       children: {},
-      endOfTheWord: false
+      isCompleteWord: false
     });
   });
 
